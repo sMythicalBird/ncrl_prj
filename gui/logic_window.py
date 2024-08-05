@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-@file: test.py
-@time: 2024/8/4
+@file: logic_window.py
+@time: 2024/8/5
 @auther: sMythicalBird
 """
 from PyQt5.QtWidgets import (
@@ -18,7 +18,7 @@ from PyQt5.QtWidgets import (
     QSpinBox,
     QDoubleSpinBox,
 )
-import sys
+from .main_window import MainWindow
 
 
 class LoginWindow(QWidget):
@@ -49,47 +49,19 @@ class LoginWindow(QWidget):
 
         self.setLayout(layout)
 
+    # 账户密码验证
     def check_login(self):
         username = self.username_input.text()
         password = self.password_input.text()
-
         if (
-            username == "admin" and password == "password"
+            username == "admin" and password == "123456"
         ):  # Simple check for demonstration
             self.accept_login()
         else:
             QMessageBox.warning(self, "Error", "Bad user or password")
 
+    # 打开主窗口，关闭登陆界面
     def accept_login(self):
         self.main_window = MainWindow()
         self.main_window.show()
         self.close()
-
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.initUI()
-
-    def initUI(self):
-        self.setWindowTitle("Main Window")
-        self.setGeometry(100, 100, 400, 300)
-
-        self.form_layout = QFormLayout()
-
-        self.int_param = QSpinBox()
-        self.double_param = QDoubleSpinBox()
-
-        self.form_layout.addRow("Integer Parameter:", self.int_param)
-        self.form_layout.addRow("Double Parameter:", self.double_param)
-
-        self.central_widget = QWidget()
-        self.central_widget.setLayout(self.form_layout)
-        self.setCentralWidget(self.central_widget)
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    login_window = LoginWindow()
-    login_window.show()
-    sys.exit(app.exec_())
