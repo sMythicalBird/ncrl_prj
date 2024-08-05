@@ -8,6 +8,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 def main():
     # 创建主窗口
     root = tk.Tk()
@@ -21,11 +22,14 @@ def main():
     label.pack(pady=20)
 
     # 创建一个按钮
-    button = ttk.Button(root, text="Click Me", command=lambda: label.config(text="Button Clicked!"))
+    button = ttk.Button(
+        root, text="Click Me", command=lambda: label.config(text="Button Clicked!")
+    )
     button.pack(pady=10)
 
     # 运行主循环
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()

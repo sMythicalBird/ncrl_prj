@@ -15,7 +15,9 @@ def run_matlab(file_path: str):
     eng = matlab.engine.start_matlab()
     print("MATLAB Engine is started.")
     # 添加MATLAB代码目录到MATLAB引擎的搜索路径
-    directories = [d for d in mat_code_path.iterdir() if d.is_dir()]    # 获取matlab程序目录下的所有文件夹
+    directories = [
+        d for d in mat_code_path.iterdir() if d.is_dir()
+    ]  # 获取matlab程序目录下的所有文件夹
     for path in directories:
         eng.addpath(str(path), nargout=0)
 
