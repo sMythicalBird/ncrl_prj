@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import (
     QLineEdit,
     QPushButton,
     QMessageBox,
+    QHBoxLayout,
     QMainWindow,
     QAction,
     QFormLayout,
@@ -32,19 +33,25 @@ class LoginWindow(QWidget):
 
         layout = QVBoxLayout()
 
+        # 用户名输入框
+        username_layout = QHBoxLayout()
         self.username_label = QLabel("Username:")
         self.username_input = QLineEdit()
+        username_layout.addWidget(self.username_label)
+        username_layout.addWidget(self.username_input)
+        # 密码输入框
+        password_layout = QHBoxLayout()
         self.password_label = QLabel("Password:")
         self.password_input = QLineEdit()
         self.password_input.setEchoMode(QLineEdit.Password)
+        password_layout.addWidget(self.password_label)
+        password_layout.addWidget(self.password_input)
 
         self.login_button = QPushButton("Login")
         self.login_button.clicked.connect(self.check_login)
 
-        layout.addWidget(self.username_label)
-        layout.addWidget(self.username_input)
-        layout.addWidget(self.password_label)
-        layout.addWidget(self.password_input)
+        layout.addLayout(username_layout)
+        layout.addLayout(password_layout)
         layout.addWidget(self.login_button)
 
         self.setLayout(layout)
