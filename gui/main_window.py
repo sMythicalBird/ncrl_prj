@@ -4,16 +4,9 @@
 @time: 2024/8/5
 @auther: sMythicalBird
 """
-from PyQt5.QtWidgets import (
-    QApplication,
+from PySide6.QtWidgets import (
     QWidget,
-    QVBoxLayout,
-    QLabel,
-    QLineEdit,
-    QPushButton,
-    QMessageBox,
     QMainWindow,
-    QAction,
     QFormLayout,
     QSpinBox,
     QDoubleSpinBox,

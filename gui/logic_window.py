@@ -4,21 +4,18 @@
 @time: 2024/8/5
 @auther: sMythicalBird
 """
-from PyQt5.QtWidgets import (
-    QApplication,
+# LoginWindow 类
+from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
+    QHBoxLayout,
     QLabel,
     QLineEdit,
     QPushButton,
     QMessageBox,
-    QHBoxLayout,
-    QMainWindow,
-    QAction,
-    QFormLayout,
-    QSpinBox,
-    QDoubleSpinBox,
 )
+from PySide6.QtGui import QPixmap, QPalette, QBrush
+from PySide6.QtCore import Qt
 from .main_window import MainWindow
 
 
@@ -33,13 +30,12 @@ class LoginWindow(QWidget):
 
         layout = QVBoxLayout()
 
-        # 用户名输入框
         username_layout = QHBoxLayout()
         self.username_label = QLabel("Username:")
         self.username_input = QLineEdit()
         username_layout.addWidget(self.username_label)
         username_layout.addWidget(self.username_input)
-        # 密码输入框
+
         password_layout = QHBoxLayout()
         self.password_label = QLabel("Password:")
         self.password_input = QLineEdit()
@@ -56,18 +52,14 @@ class LoginWindow(QWidget):
 
         self.setLayout(layout)
 
-    # 账户密码验证
     def check_login(self):
         username = self.username_input.text()
         password = self.password_input.text()
-        if (
-            username == "admin" and password == "123456"
-        ):  # Simple check for demonstration
+        if username == "admin" and password == "123456":
             self.accept_login()
         else:
             QMessageBox.warning(self, "Error", "Bad user or password")
 
-    # 打开主窗口，关闭登陆界面
     def accept_login(self):
         self.main_window = MainWindow()
         self.main_window.show()
