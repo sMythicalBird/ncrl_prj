@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
     QSpinBox,
     QDoubleSpinBox,
 )
+from PySide6.QtGui import QGuiApplication
 
 
 class MainWindow(QMainWindow):
@@ -33,3 +34,14 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.central_widget.setLayout(self.form_layout)
         self.setCentralWidget(self.central_widget)
+        self.center()
+
+    def center(self):
+        screen_geometry = (
+            QGuiApplication.primaryScreen().availableGeometry()
+        )  # 获取主屏幕的可用几何信息
+        window_geometry = self.frameGeometry()  # 获取当前窗口的几何信息
+        window_geometry.moveCenter(
+            screen_geometry.center()
+        )  # 将窗口几何的中心移动到屏幕几何的中心
+        self.move(window_geometry.topLeft())  # 将窗口移动到调整后的窗口几何的左上角

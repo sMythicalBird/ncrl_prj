@@ -5,6 +5,8 @@
 @auther: sMythicalBird
 """
 # LoginWindow 类
+
+from .main_window import MainWindow
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -14,17 +16,15 @@ from PySide6.QtWidgets import (
     QPushButton,
     QMessageBox,
 )
-from PySide6.QtGui import QPixmap, QPalette, QBrush
-from PySide6.QtCore import Qt
-from .main_window import MainWindow
+from PySide6.QtGui import QGuiApplication
 
 
 class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         self.setWindowTitle("Login")
         self.setGeometry(100, 100, 300, 200)
 
@@ -51,6 +51,17 @@ class LoginWindow(QWidget):
         layout.addWidget(self.login_button)
 
         self.setLayout(layout)
+        self.center()
+
+    def center(self):
+        screen_geometry = (
+            QGuiApplication.primaryScreen().availableGeometry()
+        )  # 获取主屏幕的可用几何信息
+        window_geometry = self.frameGeometry()  # 获取当前窗口的几何信息
+        window_geometry.moveCenter(
+            screen_geometry.center()
+        )  # 将窗口几何的中心移动到屏幕几何的中心
+        self.move(window_geometry.topLeft())  # 将窗口移动到调整后的窗口几何的左上角
 
     def check_login(self):
         username = self.username_input.text()
