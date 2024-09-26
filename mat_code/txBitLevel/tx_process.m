@@ -1,4 +1,4 @@
-function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type,a,b)
+function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type)
     % blks:传输块的数量
     % nof_sc:资源负载
     % len_blk:块长
@@ -28,9 +28,6 @@ function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type,a,b)
     sym_end_id = pxsch.data_sym_end_id;
     blks = sym_end_id - sym_begin_id + 1;     % 需要生成的传输块数量
     payload_bits = randi(2, len_blk, blks) - 1;                   % 生成blks个传输块
-    payload_bits(:,1) = a;
-    payload_bits(:,2) = a;
-    payload_bits(:,3) = a;
     if type == 'ul'
         payload_bits(:, blks) = 1;
     end
@@ -56,7 +53,7 @@ function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type,a,b)
         ncrl_rm = ncrlRateMatchLDPC(ncrl_ldpc, len_coded, rv, modulation, nlayers,cbsInfo.BGN);
         % 加扰
         payload_scramble = scrambling(ncrl_rm, length(ncrl_rm), c_init);
-        data_sym = ncrlModulate(ncrl_rm,modulation);
+        data_sym = ncrlModulate(payload_scramble,modulation);
         t_data(:,i) = data_sym;
         tx_data(data_carrier_set,data_idx) = data_sym;
         data_idx = data_idx + 1;

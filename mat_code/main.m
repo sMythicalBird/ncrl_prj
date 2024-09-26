@@ -11,8 +11,8 @@ code_rate = len_blk/len_code; % 码率
 
 % 获取cbs
 cbsInfo = ncrlCbsInfo(len_blk,code_rate, 24);
-% payload_bits = randi(2, len_blk, 1) - 1;      
-payload_bits = a;
+payload_bits = randi(2, len_blk, 1) - 1;
+
 modulation = 'QPSK';
 
 

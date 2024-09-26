@@ -7,12 +7,12 @@ function bas_par = initinalize_basic_param(pxsch)
     bas_par.nTxHoriSubarray     = 1; % num. of horizontal subarrays
     bas_par.nTxSubarray         = bas_par.nTxVertSubarray*bas_par.nTxHoriSubarray; % num. of subarrays at the tx
     
-    bas_par.nRxVertSubarray     = 4;
+    bas_par.nRxVertSubarray     = 1;
     bas_par.nRxHoriSubarray     = 1;
     bas_par.nRxSubarray         = bas_par.nRxVertSubarray*bas_par.nRxHoriSubarray; % num. of subarrays at the rx
 
     % *** system parameter ***
-    bas_par.D                   = 100; % distance between tx and rx (deployed face to face) [m]
+    bas_par.D                   = 50; % distance between tx and rx (deployed face to face) [m]
     bas_par.H                   = 2; % height from the ground [m]
     bas_par.fc                  = pxsch.center_frequency; % carrier frequency [Hz]
     bas_par.spdOfLight          = 3e8;

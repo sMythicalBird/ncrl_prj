@@ -58,7 +58,7 @@ function result = rx_process(rx_data, payload_bits, pxsch)
             % 解扰
             ncrl_descram = nrPUSCHDescramble(ncrl_demod,n_id,rnti);
             % 速率恢复
-            ncrl_raterec = ncrlRateRecoverLDPC(ncrl_demod,len_blk,rate,rv,modulation,nlayers,cbsInfo);
+            ncrl_raterec = ncrlRateRecoverLDPC(ncrl_descram,len_blk,rate,rv,modulation,nlayers,cbsInfo);
             % ldpc解码
             ncrl_decBits = ncrLDPCDecode(ncrl_raterec, cbsInfo.BGN, 25);
             blk = nrclCodeBlockDesegmentLDPC(ncrl_decBits,cbsInfo.BGN, len_blk + cbsInfo.L,cbsInfo);

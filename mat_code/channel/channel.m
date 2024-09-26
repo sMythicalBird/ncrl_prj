@@ -1,5 +1,5 @@
 function rx_sig = channel(tx_sig, Ht, bas_par)
-    a = 84;  % 放大系数
+    a = 60;  % 放大系数
     txpower_dBm = bas_par.txpower_dBm + a;
     varNoise_dBm = bas_par.varNoise_dBm + a;
     noise_var = 10^(varNoise_dBm/10);
