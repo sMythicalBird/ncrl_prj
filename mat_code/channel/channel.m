@@ -15,8 +15,6 @@ function rx_sig = channel(tx_sig, Ht, bas_par)
     noise = sqrt(noise_var/2) .* (randn(len,1) + 1j*randn(len,1));
     rx_sig = rx_tmp + noise;
 
-%     rx_sig = tx_sig;
-% rx_sig = rx_sig*15;
 
 end
 

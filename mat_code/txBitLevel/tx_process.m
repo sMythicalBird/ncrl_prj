@@ -1,12 +1,11 @@
-function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type)
+function [tx_data, payload_bits] = tx_process(pxsch ,type)
     % blks:传输块的数量
     % nof_sc:资源负载
     % len_blk:块长
     % nof_symbs:总符号数
     % tx_data:经过比特级处理后的数据。  维度：fft_size * nof_symbs
     % payload_bits: 发送端的原始数据。  维度：len_blk * blks
-        nof_symbs = pxsch.nof_symbs;
-    
+    nof_symbs = pxsch.nof_symbs;    
     fft_size = pxsch.fft_size;
     tx_data = zeros(fft_size, nof_symbs);
     data_carrier_set = pxsch.data_carrier_set;
@@ -40,7 +39,6 @@ function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type)
     crc_n = pxsch.crc_n;
     cbsInfo = ncrlCbsInfo(len_blk, len_blk/len_coded, crc_n);
     data_idx = sym_begin_id;
-    t_data = zeros(160,3);
     for i = 1:blks
         data = payload_bits(:,i);
         % CRC
@@ -54,7 +52,6 @@ function [tx_data, payload_bits, t_data] = tx_process(pxsch ,type)
         % 加扰
         payload_scramble = scrambling(ncrl_rm, length(ncrl_rm), c_init);
         data_sym = ncrlModulate(payload_scramble,modulation);
-        t_data(:,i) = data_sym;
         tx_data(data_carrier_set,data_idx) = data_sym;
         data_idx = data_idx + 1;
     end

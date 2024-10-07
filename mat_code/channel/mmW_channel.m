@@ -1,4 +1,4 @@
-function Ht = mmW_channel(bas_par, channel_from_file_flag)    
+function Ht = mmW_channel(bas_par)    
     %% generate channel
     % *** calculate locations of subarrays ***
     [loca_par] = calc_subarray_location(bas_par);

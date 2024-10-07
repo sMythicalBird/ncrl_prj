@@ -5,7 +5,6 @@ pxsch = pxsch_config();     % 配置pxsch信息
 
 
 % 传输使用的毫米波信道
-channel_from_file_flag = 1;
 bas_par = initinalize_basic_param(pxsch);   % 配置信道
 
 
@@ -26,7 +25,7 @@ for idx = 1:length(txPower)
         tic
         bits_err = zeros(1,numpar);
         blks_err = zeros(1,numpar);
-        Ht = mmW_channel(bas_par, channel_from_file_flag);
+        Ht = mmW_channel(bas_par);
         parfor i = 1:numpar
             % 发送端处理
             [tx_data, payload_bits] = tx_process(pxsch,'dl');

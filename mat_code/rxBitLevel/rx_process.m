@@ -50,7 +50,7 @@ function result = rx_process(rx_data, payload_bits, pxsch)
 %     ldpc_out = zeros(len_blk,nof_data_symb);
     blks_err = zeros(1,nof_data_symb);
     bits_err = zeros(1,nof_data_symb);
-    noise_var = 1e-10;
+%     noise_var = 1e-10;
 %     noise_var = 1;
     for nd = 1:nof_data_symb
             % 解调制
