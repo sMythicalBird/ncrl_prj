@@ -5,7 +5,7 @@ pdsch = pxsch_config();     % 配置pxsch信息
 pusch = pxsch_config();     % 配置pxsch信息
 
 % 传输使用的毫米波信道
-bas_par = initinalize_basic_param(pdsch);   % 配置信道
+bas_par = initinalize_basic_param_4x1(pdsch);   % 配置信道
 
 
 txPower = 5:14;

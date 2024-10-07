@@ -1,21 +1,21 @@
-function bas_par = initinalize_basic_param(pxsch)
+function bas_par = initinalize_basic_param_4x1(pxsch)
     bas_par.nVertAntOfSubarray  = 8; % num. of vertical antennas
     bas_par.nHoriAntOfSubarray  = 8; % num. of horizontal antennas
     bas_par.nAntSubarray        = bas_par.nVertAntOfSubarray*bas_par.nHoriAntOfSubarray; % num. of antennas deployed at each subarray
     
-    bas_par.nTxVertSubarray     = 1; % num. of vertical subarrays
+    bas_par.nTxVertSubarray     = 4; % num. of vertical subarrays
     bas_par.nTxHoriSubarray     = 1; % num. of horizontal subarrays
     bas_par.nTxSubarray         = bas_par.nTxVertSubarray*bas_par.nTxHoriSubarray; % num. of subarrays at the tx
     
     bas_par.nRxVertSubarray     = 1;
     bas_par.nRxHoriSubarray     = 1;
     bas_par.nRxSubarray         = bas_par.nRxVertSubarray*bas_par.nRxHoriSubarray; % num. of subarrays at the rx
-    
+
     bas_par.mul_ant_diversity   = bas_par.nRxSubarray/bas_par.nTxSubarray;  % 多天线分集的增益系数
 
     % *** system parameter ***
-    bas_par.D                   = 50; % distance between tx and rx (deployed face to face) [m]
-    bas_par.H                   = 2; % height from the ground [m]
+    bas_par.D                   = 46; % distance between tx and rx (deployed face to face) [m]
+    bas_par.H                   = 4; % height from the ground [m]
     bas_par.fc                  = pxsch.center_frequency; % carrier frequency [Hz]
     bas_par.spdOfLight          = 3e8;
     bas_par.lambda_c            = bas_par.spdOfLight/bas_par.fc; % wavelength [m]

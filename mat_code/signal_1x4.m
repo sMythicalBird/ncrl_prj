@@ -30,7 +30,7 @@ for slot_idx = 1:4
     bit_err(slot_idx) = result.bit_err;
 end
 
-% 下行
+% 上行
 for slot_idx = 5:8
     sidx = mod(slot_idx - 1, 4) + 1;
     % 发送端处理
