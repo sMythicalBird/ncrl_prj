@@ -5,7 +5,7 @@ function rx_sig = channel(tx_sig, Ht, bas_par)
     noise_var = 10^(varNoise_dBm/10);
     % 根据功率求发送天线实际发送能量
     total_power = sum(abs(tx_sig).^2);
-    tx_coefficient = 10^(txpower_dBm/10) * 1200 / bas_par.fs / total_power* bas_par.mul_ant_diversity;
+    tx_coefficient = 10^(txpower_dBm/10) * 1200 / bas_par.fs / total_power;
     tx_sig = tx_coefficient * tx_sig;
 
     tx_idx = size(Ht,1);
