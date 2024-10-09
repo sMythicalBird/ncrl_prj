@@ -28,7 +28,7 @@ function [tx_data, payload_bits] = tx_process(pxsch ,type)
     blks = sym_end_id - sym_begin_id + 1;     % 需要生成的传输块数量
     payload_bits = randi(2, len_blk, blks) - 1;                   % 生成blks个传输块
     if type == 'ul'
-        payload_bits(:, blks) = 1;
+        payload_bits(len_blk,blks) = 1;     % 上行需要回复确认，这里选在最后一个符号的最后一位进行回复
     end
     n_id_set = pxsch.n_id_set;
     rnti = pxsch.rnti_set;

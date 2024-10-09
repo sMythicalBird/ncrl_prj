@@ -13,7 +13,7 @@ function bas_par = initinalize_basic_param_1x4(pxsch)
 
     % *** system parameter ***
     bas_par.D                   = 50; % distance between tx and rx (deployed face to face) [m]
-    bas_par.H                   = 2; % height from the ground [m]
+    bas_par.H                   = 4; % height from the ground [m]
     bas_par.fc                  = pxsch.center_frequency; % carrier frequency [Hz]
     bas_par.spdOfLight          = 3e8;
     bas_par.lambda_c            = bas_par.spdOfLight/bas_par.fc; % wavelength [m]
